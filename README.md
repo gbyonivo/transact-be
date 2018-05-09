@@ -19,10 +19,10 @@ These instructions will get you a copy of the project up and running on your loc
 * set request type to POST
 * type localhost:4000/login on postman
 * set content type t0 application/json
-* enter id and name 
+* in the body, select raw and type in your credentials
   {
-    id: 7,
-    name: Gaara
+    username: Salah,
+    password: egyptianKing
   }
 * copy the token returned e.g irewirewpriwjfnow03490
 * in a new tab, set request type to POST

@@ -10,7 +10,6 @@ const jwtOptions = {
 export default new JwtStrategy(
   jwtOptions,
   (jwtPayload, callBack) => {
-    console.log(jwtPayload);
     const { id, name } = jwtPayload;
     if (id && name) {
       return callBack(null, createToken(id, name));

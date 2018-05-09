@@ -26,17 +26,17 @@ export const graphqlFcn = schema =>
     };
   };
 
-export const createToken = (id, name) =>
+export const createToken = () =>
   jwt.sign({
-    id,
-    name
+    id: 9,
+    name: 'Pharaoh Salah'
   }, secret);
 
 export const login = ({ body }, res) => {
-  const { id, name } = body;
-  if (id && name) {
+  const { username, password } = body;
+  if (username && password) {
     res.json({
-      token: createToken(id, name)
+      token: createToken()
     });
   } else {
     res.sendStatus(401);
