@@ -1,0 +1,24 @@
+{
+  "parserOptions": {
+      "ecmaVersion": 2015,
+      "sourceType": "module",
+      "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+      }
+  },
+  "env": {
+      "node": true
+  },
+  "plugins": [],
+  "extends": [
+      "airbnb-base"
+  ],
+  "rules": {
+      "comma-dangle": "off",
+      "eol-last": "off",
+      "indent": [2, 2],
+      "no-confusing-arrow": "off",
+      "max-len": [2, 150]
+  }
+}
