@@ -1,7 +1,10 @@
-import { queries } from './account';
+import { queries, mutations } from './account';
 
 export default {
   Query: {
     ...queries
+  },
+  Mutation: {
+    ...mutations
   }
 };

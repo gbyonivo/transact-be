@@ -1,5 +1,6 @@
 export default `
   type Query {
-    getAccount(id: Int): Account
+    getAccount(name: String): Account
+    getAccounts: [Account]
   }
 `;

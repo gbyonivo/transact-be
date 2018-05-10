@@ -1,12 +1,25 @@
-const getAccount = (root, { id }) =>
-  ({ id, name: 'Kratos War' });
+import { Account } from '../connectors/mongoDB';
 
-const createAccount = () => {};
+const getAccount = (_, { name }) =>
+  Account.findOne({ name });
+
+const createAccount = (_, args) =>
+  Account.create(args);
+
+const getAccounts = () =>
+  Account.find();
+
+const deleteAccounts = () =>
+  Account.collection.drop()
+    .then(() => ({ message: 'Successfully Deleted' }))
+    .catch(() => ({ message: 'Error encountered' }));
 
 export const queries = {
-  getAccount
+  getAccount,
+  getAccounts
 };
 
 export const mutations = {
-  createAccount
+  createAccount,
+  deleteAccounts
 };

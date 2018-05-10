@@ -1,8 +1,11 @@
 import { BASE_TYPES } from '../constants/type';
 
-export default {
+export const account = {
   name: BASE_TYPES.STRING,
-  id: BASE_TYPES.INT,
   type: BASE_TYPES.STRING,
-  regNumber: BASE_TYPES.STRING,
+  address: BASE_TYPES.STRING,
+};
+
+export const message = {
+  message: BASE_TYPES.STRING
 };

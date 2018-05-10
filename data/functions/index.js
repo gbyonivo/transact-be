@@ -5,8 +5,8 @@ import secret from '../constants/secret';
 export const extractDefinition = definition =>
   `${JSON.stringify(definition).replace(new RegExp('"', 'g'), '')}`;
 
-export const extractDefinitionForQuery = (definition, deletables) => {
-  const rDefinition = definition;
+export const extractDefinitionForQuery = (definition, deletables = []) => {
+  const rDefinition = { ...definition };
   deletables.forEach((deletable) => {
     delete rDefinition[deletable];
   });
