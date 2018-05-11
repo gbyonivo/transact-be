@@ -1,7 +1,7 @@
-import { Account } from '../connectors/mongoDB';
+import { Account, convertToObjectId } from '../connectors/mongoDB';
 
-const getAccount = (_, { name }) =>
-  Account.findOne({ name });
+const getAccount = (_, { _id }) =>
+  Account.findById(convertToObjectId(_id));
 
 const createAccount = (_, args) =>
   Account.create(args);
@@ -9,8 +9,12 @@ const createAccount = (_, args) =>
 const getAccounts = () =>
   Account.find();
 
-const deleteAccounts = () =>
-  Account.collection.drop()
+const updateAccount = (_, { _id, ...changes }) =>
+  Account.update({ _id }, { $set: changes })
+    .then(() => Account.findById(convertToObjectId(_id)));
+
+const deleteAccount = (_, { _id }) =>
+  Account.deleteOne({ _id })
     .then(() => ({ message: 'Successfully Deleted' }))
     .catch(() => ({ message: 'Error encountered' }));
 
@@ -21,5 +25,6 @@ export const queries = {
 
 export const mutations = {
   createAccount,
-  deleteAccounts
+  deleteAccount,
+  updateAccount
 };

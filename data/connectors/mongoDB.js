@@ -9,6 +9,9 @@ const transact = Mongoose.connect('mongodb://localhost:27017/transact', (err) =>
 
 const Account = Mongoose.model('accounts', Mongoose.Schema(Models.account));
 
+const convertToObjectId = Mongoose.Types.ObjectId;
+
 export {
-  Account
+  Account,
+  convertToObjectId
 };

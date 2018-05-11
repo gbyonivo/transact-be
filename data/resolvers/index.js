@@ -6,5 +6,8 @@ export default {
   },
   Mutation: {
     ...mutations
+  },
+  Account: {
+    transactions: account => account.transactions
   }
 };

@@ -1,6 +1,6 @@
 export default `
   type Query {
-    getAccount(name: String): Account
+    getAccount(_id: String): Account
     getAccounts: [Account]
   }
 `;
