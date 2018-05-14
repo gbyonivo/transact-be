@@ -2,11 +2,13 @@ import { BASE_TYPES, CREATED_TYPES } from '../constants/type';
 
 export const transaction = {
   date: BASE_TYPES.STRING,
-  type: BASE_TYPES.STRING,
-  receivedFrom: BASE_TYPES.STRING,
-  sentTo: BASE_TYPES.STRING,
-  amount: BASE_TYPES.FLOAT,
-  balance: BASE_TYPES.FLOAT
+  _id: BASE_TYPES.STRING,
+  rate: BASE_TYPES.FLOAT,
+  interest: BASE_TYPES.FLOAT,
+  rateIntervals: BASE_TYPES.INT,
+  receiver: BASE_TYPES.STRING,
+  sender: BASE_TYPES.STRING,
+  amount: BASE_TYPES.FLOAT
 };
 
 export const account = {
@@ -18,7 +20,6 @@ export const account = {
   bankAccountName: BASE_TYPES.STRING,
   bankAccountNumber: BASE_TYPES.STRING,
   regNumber: BASE_TYPES.STRING,
-  balance: BASE_TYPES.FLOAT,
   transactions: [CREATED_TYPES.TRANSACTION]
 };
 

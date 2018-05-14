@@ -1,11 +1,17 @@
-import { queries, mutations } from './account';
+import {
+  queries as accountQueries,
+  mutations as accountMutations
+} from './account';
+
+import { mutations as transactionMutations } from './transaction';
 
 export default {
   Query: {
-    ...queries
+    ...accountQueries
   },
   Mutation: {
-    ...mutations
+    ...accountMutations,
+    ...transactionMutations
   },
   Account: {
     transactions: account => account.transactions

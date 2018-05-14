@@ -6,6 +6,18 @@ export default {
   bankAccountNumber: String,
   bankName: String,
   bankAccountName: String,
-  balance: Number,
-  transactions: []
+  transactions: [{
+    date: Date,
+    amount: Number,
+    sender: String,
+    receiver: String,
+    rate: Number,
+    interest: Number,
+    rateIntervals: Number,
+    raiseDates: [{
+      date: Date,
+      amount: Number,
+      usedRate: Number
+    }]
+  }]
 };
