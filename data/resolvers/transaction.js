@@ -28,8 +28,8 @@ const borrow = (_, { _id, ...transactionDetails }) =>
       {
         $push: { transactions: createLenderTransaction(transactionDetails, _id) }
       }
-    )
-      .then(() => Account.findById(convertToObjectId(_id))));
+    ))
+    .then(() => Account.findById(convertToObjectId(_id)));
 
 const cleanTransactions = (_, { sender, receiver }) =>
   Account.findById(convertToObjectId(receiver))
