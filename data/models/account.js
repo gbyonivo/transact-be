@@ -11,6 +11,8 @@ export default {
     amount: Number,
     sender: String,
     receiver: String,
+    status: String,
+    amountPaid: { type: Number, default: 0 },
     rate: Number,
     interest: Number,
     rateIntervals: Number,

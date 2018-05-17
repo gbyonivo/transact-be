@@ -6,5 +6,27 @@ export default `
   updateAccount(${extractDefinitionForQuery(account, ['transactions'])}): Account,
   deleteAccount(_id: String): Message,
   cleanTransactions(receiver: String, sender: String): Message,
-  borrow(${extractDefinitionForQuery(transaction, ['date', 'receiver', 'interest'])}): Account
+  borrow(${extractDefinitionForQuery(
+    transaction,
+    [
+      'date',
+      'receiver',
+      'interest',
+      'amountPaid',
+      'associatedTransaction',
+      'profitAccount',
+      'status'
+    ]
+  )}): Account,
+  payback(${extractDefinitionForQuery(
+    transaction,
+    [
+      'date',
+      'sender',
+      'interest',
+      'amountPaid',
+      'rate',
+      'rateIntervals'
+    ]
+  )}): Account
 `;

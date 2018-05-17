@@ -8,7 +8,11 @@ export const transaction = {
   rateIntervals: BASE_TYPES.INT,
   receiver: BASE_TYPES.STRING,
   sender: BASE_TYPES.STRING,
-  amount: BASE_TYPES.FLOAT
+  associatedTransaction: BASE_TYPES.STRING,
+  profitAccount: BASE_TYPES.STRING,
+  status: BASE_TYPES.STRING,
+  amount: BASE_TYPES.FLOAT,
+  amountPaid: BASE_TYPES.FLOAT
 };
 
 export const account = {
