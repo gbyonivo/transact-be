@@ -1,5 +1,11 @@
 import { BASE_TYPES, CREATED_TYPES } from '../constants/type';
 
+export const summary = {
+  interest: BASE_TYPES.FLOAT,
+  borrowed: BASE_TYPES.FLOAT,
+  paid: BASE_TYPES.FLOAT,
+};
+
 export const transaction = {
   date: BASE_TYPES.STRING,
   _id: BASE_TYPES.STRING,
@@ -24,9 +30,11 @@ export const account = {
   bankAccountName: BASE_TYPES.STRING,
   bankAccountNumber: BASE_TYPES.STRING,
   regNumber: BASE_TYPES.STRING,
-  transactions: [CREATED_TYPES.TRANSACTION]
+  transactions: [CREATED_TYPES.TRANSACTION],
+  summary: CREATED_TYPES.SUMMARY
 };
 
 export const message = {
-  message: BASE_TYPES.STRING
+  message: BASE_TYPES.STRING,
+  _id: BASE_TYPES.STRING,
 };

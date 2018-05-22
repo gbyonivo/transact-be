@@ -42,3 +42,14 @@ export const login = ({ body }, res) => {
     res.sendStatus(401);
   }
 };
+
+export const getSummary = (transactions = []) => ({
+  borrowed: transactions
+    .filter(transaction => transaction.sender)
+    .reduce((acc, next) => acc + (next.amount || 0), 0),
+  paid: transactions
+    .reduce((acc, next) => acc + (next.amountPaid || 0), 0),
+  interest: transactions
+    .filter(transaction => transaction.sender)
+    .reduce((acc, next) => acc + (next.interest || 0), 0),
+});

@@ -4,6 +4,7 @@ import {
 } from './account';
 
 import { mutations as transactionMutations } from './transaction';
+import { getSummary } from '../functions';
 
 export default {
   Query: {
@@ -14,6 +15,7 @@ export default {
     ...transactionMutations
   },
   Account: {
-    transactions: account => account.transactions
+    transactions: account => account.transactions,
+    summary: account => getSummary(account.transactions),
   }
 };

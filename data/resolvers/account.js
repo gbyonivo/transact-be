@@ -1,7 +1,7 @@
 import { Account, convertToObjectId } from '../connectors/mongoDB';
 
-const getAccount = (_, { _id }) =>
-  Account.findById(convertToObjectId(_id));
+const getAccount = (_, { id }) =>
+  Account.findById(id);
 
 const createAccount = (_, args) =>
   Account.create(args);
@@ -15,8 +15,8 @@ const updateAccount = (_, { _id, ...changes }) =>
 
 const deleteAccount = (_, { _id }) =>
   Account.deleteOne({ _id })
-    .then(() => ({ message: 'Successfully Deleted' }))
-    .catch(() => ({ message: 'Error encountered' }));
+    .then(() => ({ message: 'Successfully Deleted', _id }))
+    .catch(() => ({ message: 'Error encountered', _id }));
 
 export const queries = {
   getAccount,

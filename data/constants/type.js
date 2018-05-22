@@ -8,5 +8,6 @@ export const BASE_TYPES = {
 };
 
 export const CREATED_TYPES = {
-  TRANSACTION: 'Transaction'
+  TRANSACTION: 'Transaction',
+  SUMMARY: 'TransactionsSummary',
 };
