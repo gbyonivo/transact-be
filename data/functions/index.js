@@ -48,7 +48,8 @@ export const getSummary = (transactions = []) => ({
     .filter(transaction => transaction.sender)
     .reduce((acc, next) => acc + (next.amount || 0), 0),
   paid: transactions
-    .reduce((acc, next) => acc + (next.amountPaid || 0), 0),
+    .filter(transaction => transaction.receiver)
+    .reduce((acc, next) => acc + (next.amount || 0), 0),
   interest: transactions
     .filter(transaction => transaction.sender)
     .reduce((acc, next) => acc + (next.interest || 0), 0),

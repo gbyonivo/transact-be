@@ -4,6 +4,7 @@ export const summary = {
   interest: BASE_TYPES.FLOAT,
   borrowed: BASE_TYPES.FLOAT,
   paid: BASE_TYPES.FLOAT,
+  _id: BASE_TYPES.STRING
 };
 
 export const transaction = {
@@ -31,7 +32,8 @@ export const account = {
   bankAccountNumber: BASE_TYPES.STRING,
   regNumber: BASE_TYPES.STRING,
   transactions: [CREATED_TYPES.TRANSACTION],
-  summary: CREATED_TYPES.SUMMARY
+  summary: CREATED_TYPES.SUMMARY,
+  alteredAccountsSummaries: [CREATED_TYPES.SUMMARY]
 };
 
 export const message = {

@@ -16,6 +16,7 @@
   ],
   "rules": {
       "comma-dangle": "off",
+      "no-underscore-dangle": "off",
       "eol-last": "off",
       "indent": [2, 2],
       "no-confusing-arrow": "off",

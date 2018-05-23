@@ -7,14 +7,16 @@ export default `
     [
       'transactions',
       '_id',
-      'summary'
+      'summary',
+      'alteredAccountsSummaries'
     ]
   )}): Account,
   updateAccount(${extractDefinitionForQuery(
     account,
     [
       'transactions',
-      'summary'
+      'summary',
+      'alteredAccountsSummaries'
     ]
   )}): Account,
   deleteAccount(_id: String): Message,

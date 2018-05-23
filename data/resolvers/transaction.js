@@ -1,3 +1,4 @@
+import co from 'co';
 import { Account, convertToObjectId } from '../connectors/mongoDB';
 import { UNPAID } from '../constants/transactionStatus';
 import { getLenderTransaction, now, getProfitTransaction, getStatusAfterPayment, getAssociatedTransaction } from '../functions/transactionHelper';
@@ -17,7 +18,16 @@ const borrow = (_, { _id, ...transactionDetails }) =>
       { _id: transactionDetails.sender },
       { $push: { transactions: getLenderTransaction(transactionDetails, _id) } }
     ))
-    .then(() => Account.findById(convertToObjectId(_id)));
+    .then(() => co(function* () { //eslint-disable-line
+      const [acc, senderAccount] = yield [
+        Account.findById(convertToObjectId(_id)),
+        Account.findById(convertToObjectId(transactionDetails.sender))
+      ];
+      return {
+        ...acc._doc,
+        alteredAccounts: [{ _id: transactionDetails.sender, transactions: senderAccount.transactions }]
+      };
+    }));
 
 const payback = (_, { _id, ...transactionDetails }) =>
   Account.findById(convertToObjectId(_id))
@@ -43,7 +53,20 @@ const payback = (_, { _id, ...transactionDetails }) =>
               { _id: transactionDetails.profitAccount },
               { $push: { transactions: getProfitTransaction(transactionDetails, _id, account.transactions) } }
             ))
-            .then(() => Account.findById(convertToObjectId(_id))))));
+            .then(() => co(function* () { //eslint-disable-line
+              const [acc, profitAccount, receiverAccount] = yield [
+                Account.findById(convertToObjectId(_id)),
+                Account.findById(convertToObjectId(transactionDetails.profitAccount)),
+                Account.findById(convertToObjectId(transactionDetails.receiver))
+              ];
+              return {
+                ...acc._doc,
+                alteredAccounts: [
+                  { _id: transactionDetails.profitAccount, transactions: profitAccount.transactions },
+                  { _id: transactionDetails.receiver, transactions: receiverAccount.transactions }
+                ]
+              };
+            })))));
 
 const cleanTransactions = (_, { sender, receiver }) =>
   Account.findById(convertToObjectId(receiver))
