@@ -1,4 +1,4 @@
-import { account, transaction } from '../definitions/account';
+import { account, transaction, paybackTransaction } from '../definitions/account';
 import { extractDefinitionForQuery } from '../functions';
 
 export default `
@@ -29,19 +29,8 @@ export default `
       'interest',
       'amountPaid',
       'associatedTransaction',
-      'profitAccount',
       'status'
     ]
-  )}): Account,
-  payback(${extractDefinitionForQuery(
-    transaction,
-    [
-      'date',
-      'sender',
-      'interest',
-      'amountPaid',
-      'rate',
-      'rateIntervals',
-    ]
-  )}): Account
+  )}): TransactionResponse,
+  payback(${extractDefinitionForQuery(paybackTransaction)}): TransactionResponse
 `;

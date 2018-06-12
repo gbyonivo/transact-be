@@ -1,7 +1,7 @@
 import { Account, convertToObjectId } from '../connectors/mongoDB';
 
-const getAccount = (_, { id }) =>
-  Account.findById(id);
+const getAccount = (_, { _id }) =>
+  Account.findById(_id);
 
 const createAccount = (_, args) =>
   Account.create(args);

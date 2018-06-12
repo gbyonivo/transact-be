@@ -1,5 +1,10 @@
 import { BASE_TYPES, CREATED_TYPES } from '../constants/type';
 
+export const receivingAccountInput = {
+  accountId: BASE_TYPES.STRING,
+  amount: BASE_TYPES.FLOAT
+};
+
 export const summary = {
   interest: BASE_TYPES.FLOAT,
   borrowed: BASE_TYPES.FLOAT,
@@ -16,10 +21,22 @@ export const transaction = {
   receiver: BASE_TYPES.STRING,
   sender: BASE_TYPES.STRING,
   associatedTransaction: BASE_TYPES.STRING,
-  profitAccount: BASE_TYPES.STRING,
   status: BASE_TYPES.STRING,
   amount: BASE_TYPES.FLOAT,
   amountPaid: BASE_TYPES.FLOAT
+};
+
+export const paybackTransaction = {
+  _id: BASE_TYPES.STRING,
+  associatedTransaction: BASE_TYPES.STRING,
+  receivingAccounts: [CREATED_TYPES.RECEIVING_ACCOUNT]
+};
+
+export const transactionResponse = {
+  _id: BASE_TYPES.STRING,
+  transactions: [CREATED_TYPES.TRANSACTION],
+  summary: CREATED_TYPES.SUMMARY,
+  alteredAccountsSummaries: [CREATED_TYPES.SUMMARY]
 };
 
 export const account = {

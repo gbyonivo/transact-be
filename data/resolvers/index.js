@@ -16,8 +16,12 @@ export default {
   },
   Account: {
     transactions: account => account.transactions,
+    summary: account => getSummary(account.transactions)
+  },
+  TransactionResponse: {
+    transactions: account => account.transactions,
     summary: account => getSummary(account.transactions),
     alteredAccountsSummaries: account => account.alteredAccounts
-      .map(alteredAccount => ({ ...getSummary(alteredAccount.transactions), _id: alteredAccount._id })),
+      .map(alteredAccount => ({ ...getSummary(alteredAccount.transactions), _id: alteredAccount._id }))
   }
 };

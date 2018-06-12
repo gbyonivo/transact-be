@@ -12,6 +12,4 @@ const typeDefinitions = `
     }
 `;
 
-// console.log(typeDefinitions);
-
 export default [typeDefinitions];

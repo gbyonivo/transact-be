@@ -10,4 +10,5 @@ export const BASE_TYPES = {
 export const CREATED_TYPES = {
   TRANSACTION: 'Transaction',
   SUMMARY: 'TransactionsSummary',
+  RECEIVING_ACCOUNT: 'ReceivingAccountInput',
 };
